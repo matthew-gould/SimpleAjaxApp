@@ -8,23 +8,18 @@ namespace SimpleAjaxApp.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        [OutputCache(Duration = 30)]
+        public PartialViewResult Index()
         {
-            return View();
+            return PartialView();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        [OutputCache(Duration = 90)]
+        public PartialViewResult Index(string parameter)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return PartialView();
         }
     }
 }
