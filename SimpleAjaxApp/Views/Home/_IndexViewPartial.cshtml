@@ -1,0 +1,11 @@
+﻿
+@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "display"
+                }))
+{
+    <button class="fa fa-search" type="submit" value="click">CLICK ME</button>
+}

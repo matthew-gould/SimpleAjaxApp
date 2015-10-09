@@ -12,14 +12,14 @@ namespace SimpleAjaxApp.Controllers
         [OutputCache(Duration = 30)]
         public PartialViewResult Index()
         {
-            return PartialView();
+            return PartialView("_IndexViewPartial");
         }
 
         [HttpPost]
         [OutputCache(Duration = 90)]
         public PartialViewResult Index(string parameter)
         {
-            return PartialView();
+            return PartialView("_IndexReturnViewPartial");
         }
     }
 }
