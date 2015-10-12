@@ -1,11 +1,30 @@
 ﻿
+<div id="display">
+    <h3>Welcome to the AJAX button!</h3>
+    <p>Click the button and see what happens!</p>
+</div>
+
 @using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
-                new AjaxOptions
-                {
-                    HttpMethod = "POST",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "display"
-                }))
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "display"
+    }))
 {
-    <button type="button" class="btn btn-default" value="click">CLICK ME</button>
+    <button class="fa fa-search btn btn-danger" type="submit" value="click">CLICK ME</button>
+}
+
+@using (Ajax.BeginForm("Search", "Home", FormMethod.Post,
+                            new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "search-results"
+                            }))
+{
+    <label for="userLookupSearch">Search by User's Name</label>
+    @Html.TextBox("userName", null, new { @type = "search", @placeholder = "Surname, Name" })
+    <button class="fa fa-search"></button>
+    <span class="lookup__close">Close</span>
 }
