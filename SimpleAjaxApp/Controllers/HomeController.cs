@@ -21,12 +21,5 @@ namespace SimpleAjaxApp.Controllers
         {
             return PartialView("_IndexReturnViewPartial");
         }
-
-        [HttpPost]
-        [OutputCache(Duration = 90)]
-        public PartialViewResult Search(string parameter)
-        {
-            return PartialView("_UsersReturnViewPartial");
-        }
     }
 }
