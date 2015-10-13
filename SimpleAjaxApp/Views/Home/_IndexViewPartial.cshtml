@@ -1,11 +1,25 @@
 ﻿
 @using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
-                new AjaxOptions
-                {
-                    HttpMethod = "POST",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "display"
-                }))
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "display"
+    }))
 {
-    <button type="button" class="btn btn-default" value="click">CLICK ME</button>
+    <button class="fa fa-search" type="submit" value="click">CLICK ME</button>
 }
+
+@using (Ajax.BeginForm("Search", "Home", FormMethod.Post,
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "search-results"
+    }))
+{
+    <label for="patientLookupSearch">Search by User Name</label>
+    @Html.TextBox("name", null, new { @type = "search", @placeholder = "Surname, Name" })
+    <button class="fa fa-search">Search</button>
+}
+<div id="search-results"></div>
