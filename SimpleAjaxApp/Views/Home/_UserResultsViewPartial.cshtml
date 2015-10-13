@@ -1,0 +1,33 @@
+﻿@if (Model.CustomerSearchResults.Count == 0)
+{
+    <div>no results</div>
+}
+else
+{
+    <div class="form grid grid--spaced contents--centered">
+        <div class="grid--row">
+            <div class="grid__cell grid__cell--size-1">
+                <label>Users:</label>
+                <table class="display">
+                    <thead>
+                        <tr>
+                            <th><span>First Name</span></th>
+                            <th><span>Last Name</span></th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var customer in Model.CustomerSearchResults)
+                        {
+                            <tr>
+                                <td>@customer.FirstName</td>
+                                <td>@customer.LastName</td>
+                                <td>@customer.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
