@@ -29,7 +29,7 @@ namespace SimpleAjaxApp.Controllers
         {
             var customerResultsViewModel = new Models.CustomerResultsViewModel();
 
-            if (name != "")
+            if (name == "")
             {
                 var customerSearchResults = new List<Models.CustomerViewModel>
                 {
@@ -58,19 +58,29 @@ namespace SimpleAjaxApp.Controllers
             }
             else
             {
-                customerResultsViewModel.CustomerSearchResults = new List<Models.CustomerViewModel>();
+                CustomersDatabaseDataContext db = new CustomersDatabaseDataContext();
+
+                var customers = from a in db.Customers.
+                            Where(p => p.FirstName == name)
+                                select a;
+
+                var parsingSearchResults = customers.Select(customer =>
+                    new Models.CustomerViewModel
+                    {
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                        Email = customer.Email
+                    });
+
+                var customerSearchResults = new List<Models.CustomerViewModel> { };
+
+                foreach (var customer in parsingSearchResults)
+                {
+                    customerSearchResults.Add(customer);
+                }
+
+                customerResultsViewModel.CustomerSearchResults = customerSearchResults;  
             }
-
-            
-
-
-            //CustomersDatabaseDataContext db = new CustomersDatabaseDataContext();
-
-            //var customers = from p in db.Customers
-            //                select p;
-
-
-
             return PartialView("_UserResultsViewPartial", customerResultsViewModel);
         }
     }

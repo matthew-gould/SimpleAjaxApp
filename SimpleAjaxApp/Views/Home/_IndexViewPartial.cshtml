@@ -7,6 +7,7 @@
         UpdateTargetId = "display"
     }))
 {
+    <div id="display"></div>
     <button class="fa fa-search" type="submit" value="click">CLICK ME</button>
 }
 
@@ -18,8 +19,8 @@
         UpdateTargetId = "search-results"
     }))
 {
-    <label for="patientLookupSearch">Search by User Name</label>
-    @Html.TextBox("name", null, new { @type = "search", @placeholder = "Surname, Name" })
+    <label for="customerSearch">Search by User Name</label>
+    <div id="search-results"></div>
+    @Html.TextBox("name", null, new { @type = "search", @placeholder = "First, Last" })
     <button class="fa fa-search">Search</button>
 }
-<div id="search-results"></div>
