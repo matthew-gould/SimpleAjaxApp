@@ -83,5 +83,12 @@ namespace SimpleAjaxApp.Controllers
             }
             return PartialView("_UserResultsViewPartial", customerResultsViewModel);
         }
+
+        [HttpGet]
+        [OutputCache(Duration = 30)]
+        public PartialViewResult Add()
+        {
+            return PartialView("_AddUserViewPartial");
+        }
     }
 }
