@@ -282,6 +282,7 @@
     <Content Include="Views\Home\_IndexViewPartial.cshtml" />
     <Content Include="Views\Home\_IndexReturnViewPartial.cshtml" />
     <Content Include="Views\Home\_UserResultsViewPartial.cshtml" />
+    <Content Include="Views\Home\_SearchUsersViewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

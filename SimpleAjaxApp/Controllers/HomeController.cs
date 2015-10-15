@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SimpleAjaxApp.Controllers
@@ -10,9 +8,9 @@ namespace SimpleAjaxApp.Controllers
     {
         [HttpGet]
         [OutputCache(Duration = 30)]
-        public PartialViewResult Index()
+        public ViewResult Index()
         {
-            return PartialView("_IndexViewPartial");
+            return View("Index");
         }
 
         [HttpPost]
@@ -22,43 +20,45 @@ namespace SimpleAjaxApp.Controllers
             return PartialView("_IndexReturnViewPartial");
         }
 
+        [HttpGet]
+        [OutputCache(Duration = 30)]
+        public PartialViewResult Search()
+        {
+            return PartialView("_SearchUsersViewPartial");
+        }
+
         [HttpPost]
-        [Route]
         [OutputCache(Duration = 90)]
         public PartialViewResult Search(string name)
         {
             var customerResultsViewModel = new Models.CustomerResultsViewModel();
 
+            CustomersDatabaseDataContext db = new CustomersDatabaseDataContext();
+
             if (name == "")
             {
-                var customerSearchResults = new List<Models.CustomerViewModel>
+                var customers = from a in db.Customers
+                                select a;
+
+                var parsingSearchResults = customers.Select(customer =>
+                    new Models.CustomerViewModel
+                    {
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                        Email = customer.Email
+                    });
+
+                var customerSearchResults = new List<Models.CustomerViewModel> { };
+
+                foreach (var customer in parsingSearchResults)
                 {
-                    new Models.CustomerViewModel
-                    {
-                        FirstName = "Tony",
-                        LastName = "Romo",
-                        Email = "cowboys@gmail.com"
-                    },
+                    customerSearchResults.Add(customer);
+                }
 
-                    new Models.CustomerViewModel
-                    {
-                        FirstName = "Matthew",
-                        LastName = "Ryan",
-                        Email = "falcons@gmail.com"
-                    },
-
-                    new Models.CustomerViewModel
-                    {
-                        FirstName = "Aaron",
-                        LastName = "Rodgers",
-                        Email = "packers@gmail.com"
-                    }
-                };
                 customerResultsViewModel.CustomerSearchResults = customerSearchResults;
             }
             else
             {
-                CustomersDatabaseDataContext db = new CustomersDatabaseDataContext();
 
                 var customers = from a in db.Customers.
                             Where(p => p.FirstName == name)
