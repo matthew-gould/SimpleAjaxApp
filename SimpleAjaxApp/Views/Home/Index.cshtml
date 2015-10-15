@@ -1,22 +1,27 @@
-﻿@{
+﻿
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>Home Page</h1>
-    <p class="lead">I want this page to change when I push a button..</p>
+    <h3>Home Page</h3>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Here are the things I want to change when the button is pushed!</h2>
-        <p>
-           I could also change these things. 
-        </p>
-    
-    </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    </div>
-</div>
+@Html.Partial("_IndexViewPartial")
+
+@Ajax.ActionLink(
+    "Search Users",
+    "Search",
+    "Home",
+    new AjaxOptions { UpdateTargetId = "user-search" }
+)
+
+<div id="display"></div>
+
+<div id="user-search"></div>
+
+<div id="user-add"></div>

@@ -10,17 +10,3 @@
     <div id="display"></div>
     <button class="fa fa-search" type="submit" value="click">CLICK ME</button>
 }
-
-@using (Ajax.BeginForm("Search", "Home", FormMethod.Post,
-    new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod = "POST",
-        UpdateTargetId = "search-results"
-    }))
-{
-    <label for="customerSearch">Search by User Name</label>
-    <div id="search-results"></div>
-    @Html.TextBox("name", null, new { @type = "search", @placeholder = "First, Last" })
-    <button class="fa fa-search">Search</button>
-}

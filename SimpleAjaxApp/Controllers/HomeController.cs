@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SimpleAjaxApp.Controllers
@@ -10,9 +8,9 @@ namespace SimpleAjaxApp.Controllers
     {
         [HttpGet]
         [OutputCache(Duration = 30)]
-        public PartialViewResult Index()
+        public ViewResult Index()
         {
-            return PartialView("_IndexViewPartial");
+            return View("Index");
         }
 
         [HttpPost]
@@ -22,8 +20,14 @@ namespace SimpleAjaxApp.Controllers
             return PartialView("_IndexReturnViewPartial");
         }
 
+        [HttpGet]
+        [OutputCache(Duration = 30)]
+        public PartialViewResult Search()
+        {
+            return PartialView("_SearchUsersViewPartial");
+        }
+
         [HttpPost]
-        [Route]
         [OutputCache(Duration = 90)]
         public PartialViewResult Search(string name)
         {
