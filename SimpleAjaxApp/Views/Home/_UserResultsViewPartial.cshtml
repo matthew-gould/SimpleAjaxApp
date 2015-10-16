@@ -28,17 +28,17 @@ else
                                 <td>@customer.Email</td>
                                 <td>
                                     @using (Ajax.BeginForm("Delete", "Home", FormMethod.Post,
-                                    new AjaxOptions
+                                        new AjaxOptions
+                                        {
+                                            InsertionMode = InsertionMode.Replace,
+                                            HttpMethod = "POST",
+                                            UpdateTargetId = "user-search"
+                                        }))
                                     {
-                                        InsertionMode = InsertionMode.Replace,
-                                        HttpMethod = "POST",
-                                        UpdateTargetId = "user-add"
-                                    }))
-                                    {
-                                    <form>
-                                        <button input type="submit" name="customer_id" value=@customer.ID>DELETE</button>
-                                    </form>
-                                    <div id="user-add"></div>
+                                        <form>
+                                            <button input type="submit" name="customer_id" value=@customer.ID>DELETE</button>
+                                        </form>
+                                        <div id="search-results"></div>
                                     }
                                 </td>
                             </tr>

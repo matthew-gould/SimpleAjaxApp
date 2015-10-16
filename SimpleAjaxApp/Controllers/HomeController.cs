@@ -114,7 +114,7 @@ namespace SimpleAjaxApp.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        public ViewResult DeleteCustomer(string customer_id)
+        public PartialViewResult DeleteCustomer(string customer_id)
         {
             int person_id = int.Parse(customer_id);
             using (CustomersDatabaseDataContext db = new CustomersDatabaseDataContext())
@@ -131,7 +131,7 @@ namespace SimpleAjaxApp.Controllers
                 db.SubmitChanges();
             };
 
-            return View("Index");
+            return PartialView("_DeleteResultsPartialView");
         }
     }
 }

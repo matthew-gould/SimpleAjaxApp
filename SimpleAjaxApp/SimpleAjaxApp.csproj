@@ -285,6 +285,7 @@
     <Content Include="Views\Home\_SearchUsersViewPartial.cshtml" />
     <Content Include="Views\Home\_AddUserViewPartial.cshtml" />
     <Content Include="Views\Home\_AddUserResultsViewPartial.cshtml" />
+    <Content Include="Views\Home\_DeleteResultsPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

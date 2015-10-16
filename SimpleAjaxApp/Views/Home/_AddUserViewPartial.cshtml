@@ -1,11 +1,11 @@
 ﻿
 @using (Ajax.BeginForm("Add", "Home", FormMethod.Post,
-                            new AjaxOptions
-                            {
-                                InsertionMode = InsertionMode.Replace,
-                                HttpMethod = "POST",
-                                UpdateTargetId = "user-add"
-                            }))
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "user-add"
+    }))
 {
     <label for="customerAdd">Add a User</label>
     <fieldset>
