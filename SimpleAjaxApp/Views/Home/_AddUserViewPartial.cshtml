@@ -9,10 +9,12 @@
 {
     <label for="customerAdd">Add a User</label>
     <fieldset>
-        @Html.TextBox("firstName", null, new { @type = "Add", @placeholder = "First Name" }) <br />
-        @Html.TextBox("lastName", null, new { @type = "Add", @placeholder = "Last Name" }) <br />
-        @Html.TextBox("email", null, new { @type = "Add", @placeholder = "Email" })
-        <button class="fa fa-search">Add</button>
+        @Html.TextBox("firstName", null, new {  @placeholder = "First Name" })
+        <br />
+        @Html.TextBox("lastName", null, new { @placeholder = "Last Name" })
+        <br />
+        @Html.TextBox("email", null, new { @placeholder = "Email" })
+        <button type="submit">Add</button>
     </fieldset>
     <div id="user-add"></div>
 }

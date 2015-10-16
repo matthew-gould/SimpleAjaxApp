@@ -1,7 +1,6 @@
 ﻿@if (Model.CustomerSearchResults.Count == 0)
 {
     <div><br />no results</div>
-
 }
 else
 {
@@ -12,18 +11,36 @@ else
                 <table class="table-striped">
                     <thead>
                         <tr>
+                            <th>User ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
+                            <th>Delete Entry</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var customer in Model.CustomerSearchResults)
                         {
                             <tr>
+                                <td>@customer.ID</td>
                                 <td>@customer.FirstName</td>
                                 <td>@customer.LastName</td>
                                 <td>@customer.Email</td>
+                                <td>
+                                    @using (Ajax.BeginForm("Delete", "Home", FormMethod.Post,
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        HttpMethod = "POST",
+                                        UpdateTargetId = "user-add"
+                                    }))
+                                    {
+                                    <form>
+                                        <button input type="submit" name="customer_id" value=@customer.ID>DELETE</button>
+                                    </form>
+                                    <div id="user-add"></div>
+                                    }
+                                </td>
                             </tr>
                         }
                     </tbody>
