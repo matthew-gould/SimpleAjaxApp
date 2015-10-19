@@ -131,7 +131,7 @@ namespace SimpleAjaxApp.Controllers
                 db.SubmitChanges();
             };
 
-            return PartialView("_DeleteResultsPartialView");
+            return PartialView("_DeleteResultsViewPartial");
         }
     }
 }
