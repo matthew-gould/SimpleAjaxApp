@@ -1,0 +1,21 @@
+﻿
+@using (Ajax.BeginForm("Add", "Home", FormMethod.Post,
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "user-add"
+    }))
+{
+    <label for="customerAdd">Add a User</label>
+    <fieldset>
+        @Html.TextBox("firstName", null, new {  @placeholder = "First Name" })
+        <br />
+        @Html.TextBox("lastName", null, new { @placeholder = "Last Name" })
+        <br />
+        @Html.TextBox("email", null, new { @placeholder = "Email" })
+        <button type="submit">Add</button>
+    </fieldset>
+    <div id="user-add"></div>
+}
+

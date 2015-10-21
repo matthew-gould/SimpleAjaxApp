@@ -1,17 +1,20 @@
-﻿
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
 <div class="jumbotron">
-    <h3>Home Page</h3>
+    <h1 class="text-center"></h1>
 </div>
 
 @Html.Partial("_IndexViewPartial")
+
+<br />
+
+<div id="display"></div>
+
+<br />
 
 @Ajax.ActionLink(
     "Search Users",
@@ -20,8 +23,17 @@
     new AjaxOptions { UpdateTargetId = "user-search" }
 )
 
-<div id="display"></div>
-
 <div id="user-search"></div>
+
+<br />
+
+@Ajax.ActionLink(
+    "Add New User",
+    "Add",
+    "Home",
+    new AjaxOptions {  UpdateTargetId = "user-add"}
+)
+
+<br />
 
 <div id="user-add"></div>

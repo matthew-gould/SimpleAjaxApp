@@ -7,7 +7,7 @@ namespace SimpleAjaxApp.Models
 {
     public class Customers
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
