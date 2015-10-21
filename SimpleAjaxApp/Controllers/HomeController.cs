@@ -7,28 +7,24 @@ namespace SimpleAjaxApp.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        [OutputCache(Duration = 30)]
         public ViewResult Index()
         {
             return View("Index");
         }
 
         [HttpPost]
-        //[OutputCache(Duration = 90)]
         public PartialViewResult Index(string parameter)
         {
             return PartialView("_IndexReturnViewPartial");
         }
 
         [HttpGet]
-        [OutputCache(Duration = 30)]
         public PartialViewResult Search()
         {
             return PartialView("_SearchUsersViewPartial");
         }
 
         [HttpPost]
-        //[OutputCache(Duration = 90)]
         public PartialViewResult Search(string name)
         {
             var customerResultsViewModel = new Models.CustomerResultsViewModel();
@@ -87,14 +83,12 @@ namespace SimpleAjaxApp.Controllers
         }
 
         [HttpGet]
-        [OutputCache(Duration = 30)]
         public PartialViewResult Add()
         {
             return PartialView("_AddUserViewPartial");
         }
 
         [HttpPost]
-        //[OutputCache(Duration = 90)]
         [ActionName("Add")]
         public PartialViewResult AddCustomer(string firstName, string lastName, string email)
         {
@@ -109,7 +103,7 @@ namespace SimpleAjaxApp.Controllers
                 db.SubmitChanges();
             };
 
-                return PartialView("_AddUserResultsViewPartial");
+            return PartialView("_AddUserResultsViewPartial");
         }
 
         [HttpPost]
